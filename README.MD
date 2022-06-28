@@ -1,4 +1,4 @@
-# Cypress demo - v10+
+# Cypress demo v10+
 
 ## Install
 
