@@ -1,0 +1,23 @@
+name: Cypress_Tests
+
+on:
+  schedule:
+    - cron: '0 6   *' # each day at 6 AM
+  workflow_dispatch: # manualy triggered
+
+jobs:
+  e2e-tests:
+    name: E2E_Tests
+    runs-on: ubuntu-20.04
+    container: cypress/included:10.2.0
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Tests
+        run: npm test
