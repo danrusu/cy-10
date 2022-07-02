@@ -1,4 +1,4 @@
-name: Cypress_Tests
+name: Cypress_Tests_Docker
 
 on:
   # schedule:

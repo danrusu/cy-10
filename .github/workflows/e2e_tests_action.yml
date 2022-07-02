@@ -1,0 +1,19 @@
+name: Cypress_Tests_Action@v4
+on:
+  workflow_dispatch:
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-20.04
+
+    name: E2E on Chrome
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Cypress tests
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
