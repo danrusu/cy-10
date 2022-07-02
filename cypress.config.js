@@ -5,13 +5,19 @@ const browserify = require('@badeball/cypress-cucumber-preprocessor/browserify')
 async function setupNodeEvents(on, config) {
   await preprocessor.addCucumberPreprocessorPlugin(on, config);
   on('file:preprocessor', browserify.default(config));
+  on('task', {
+    logToTerminal(message) {
+      console.log(message);
+      return null;
+    },
+  });
   return config;
 }
 
 const configuration = {
+  supportFile: 'cypress/support/e2e.js',
   specPattern: '**/*.feature',
   experimentalSessionAndOrigin: true,
-  supportFile: false,
   video: false,
   screenshotOnRunFailure: false,
 };
