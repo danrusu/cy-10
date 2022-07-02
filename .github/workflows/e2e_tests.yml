@@ -1,8 +1,8 @@
 name: Cypress_Tests
 
 on:
-  schedule:
-    - cron: '0 6 * * *' # each day at 6 AM
+  # schedule:
+  #   - cron: '0 6 * * *' # each day at 6 AM
   workflow_dispatch: # manualy triggered
 
 jobs:
