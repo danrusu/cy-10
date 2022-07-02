@@ -1,6 +1,6 @@
 FROM cypress/included:10.2.0
 
-WORKDIR /opt/
+WORKDIR /opt/test
 
 COPY cypress/ ./cypress
 COPY cypress.config.js ./
