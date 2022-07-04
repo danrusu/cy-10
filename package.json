@@ -4,7 +4,8 @@
   "description": "Cypress Cucumber demo for cypress v10+",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run --browser chrome"
+    "test": "npx cypress run --browser chrome",
+    "cyo": "npx cypress open --browser chrome"
   },
   "keywords": [],
   "author": "Dan rusu",

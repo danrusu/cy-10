@@ -16,7 +16,7 @@ async function setupNodeEvents(on, config) {
 
 const configuration = {
   supportFile: 'cypress/support/e2e.js',
-  specPattern: '**/*.feature',
+  specPattern: 'cypress/e2e/{features/**/*.feature,spec/**/*.js}',
   experimentalSessionAndOrigin: true,
   video: false,
   screenshotOnRunFailure: false,

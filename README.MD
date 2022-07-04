@@ -12,6 +12,12 @@ npm install
 npm test
 ```
 
+## Run tests in UI
+
+```bash
+npm run cyo
+```
+
 ## Run tests in Docker
 
 ```bash
