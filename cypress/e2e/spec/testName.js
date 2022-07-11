@@ -13,6 +13,15 @@ describe(suiteName, () => {
   it(testName2, () => {
     const { currentTest } = Cypress;
     cy.log(`Test path: ${JSON.stringify(currentTest.titlePath)}`);
+    cy.logToTerminal(
+      `Test path: ${JSON.stringify(currentTest.titlePath, null, 2)}`,
+    );
     expect(currentTest.titlePath).to.deep.eq([suiteName, testName2]);
+  });
+
+  it('Has spec name', () => {
+    cy.log(JSON.stringify(Cypress.spec));
+    cy.logToTerminal(JSON.stringify(Cypress.spec, null, 2));
+    expect(Cypress.spec.fileName).to.eq('testName');
   });
 });

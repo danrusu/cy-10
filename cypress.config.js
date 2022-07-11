@@ -7,7 +7,7 @@ async function setupNodeEvents(on, config) {
   on('file:preprocessor', browserify.default(config));
   on('task', {
     logToTerminal(message) {
-      console.log(message);
+      console.log(`@@@ ${message}`);
       return null;
     },
   });
