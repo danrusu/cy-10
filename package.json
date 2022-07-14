@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx cypress run --browser chrome",
-    "cyo": "npx cypress open --browser chrome"
+    "cy": "npx cypress run --browser chrome",
+    "cyo": "npx cypress open"
   },
   "keywords": [],
   "author": "Dan rusu",

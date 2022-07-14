@@ -18,7 +18,7 @@ Then('I should see {string}', text => {
   cy.contains(text, { timeout: 3000 });
 });
 
-When('I {string} {int} and {int}', (operation, nr1, nr2) => {
+When('I do {string} for {int} and {int}', (operation, nr1, nr2) => {
   simpleCalculatorPage.typeFirstNumber(nr1);
   simpleCalculatorPage.typeSecondNumber(nr2);
   simpleCalculatorPage.selectOperation(operation.toUpperCase());
