@@ -4,6 +4,7 @@
   "description": "Cypress Cucumber demo for cypress v10+",
   "main": "index.js",
   "scripts": {
+    "dummy": "npx cypress run --browser chrome --spec \"cypress/e2e/spec/dummy.js\"",
     "test": "npx cypress run --browser chrome",
     "cy": "npx cypress run --browser chrome",
     "cyo": "npx cypress open"

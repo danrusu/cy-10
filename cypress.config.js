@@ -20,6 +20,8 @@ const configuration = {
   experimentalSessionAndOrigin: true,
   video: false,
   screenshotOnRunFailure: false,
+  chromeWebSecurity: false,
+  hideXHR: true, // custom
 };
 
 module.exports = defineConfig({
