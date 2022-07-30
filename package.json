@@ -4,7 +4,8 @@
   "description": "Cypress Cucumber demo for cypress v10+",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run --browser chrome",
+    "test": "npx mocha test/**/*.spec.js",
+    "cy": "npx cypress run --browser chrome",
     "cyo": "npx cypress open --browser chrome"
   },
   "keywords": [],
@@ -13,11 +14,17 @@
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "11.3.0",
     "@cypress/browserify-preprocessor": "3.0.2",
-    "cypress": "10.2.0"
+    "cypress": "10.2.0",
+    "gherkin-parse": "^1.0.6",
+    "glob": "^8.0.3"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [
       "cypress/e2e/step_definitions/**/*.{js,ts}"
     ]
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
   }
 }
