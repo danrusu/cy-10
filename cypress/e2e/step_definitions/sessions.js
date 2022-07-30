@@ -1,8 +1,4 @@
-const {
-  Given,
-  When,
-  Then,
-} = require('@badeball/cypress-cucumber-preprocessor');
+const { Given, When } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('I set session {string} for url {string}', (sessionId, url) => {
   cy.session(sessionId, () => {
