@@ -9,7 +9,7 @@ npm install
 ## Run tests
 
 ```bash
-npm test
+npm run cy
 ```
 
 ## Run tests in UI

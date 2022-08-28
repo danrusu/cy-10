@@ -1,0 +1,63 @@
+{
+  "test/utils/mock/gherkinParse/features/Dummy1": [
+    [
+      {
+        "id": "Simple scenario TestCase-T0111",
+        "type": "Scenario",
+        "tags": ["regression", "gb", "es"]
+      },
+      {
+        "id": "Scenario outline TestCase-T0112",
+        "type": "ScenarioOutline",
+        "tags": ["regression", "sanity", "gb"],
+        "exampleIndex": "0, 0"
+      },
+      {
+        "id": "Scenario outline TestCase-T0112",
+        "type": "ScenarioOutline",
+        "tags": ["regression", "sanity", "gb"],
+        "exampleIndex": "0, 1"
+      },
+      {
+        "id": "Scenario outline TestCase-T0112",
+        "type": "ScenarioOutline",
+        "tags": ["regression", "sanity", "es"],
+        "exampleIndex": "1, 0"
+      },
+      {
+        "id": "Scenario outline TestCase-T0112",
+        "type": "ScenarioOutline",
+        "tags": ["regression", "sanity", "es"],
+        "exampleIndex": "1, 1"
+      },
+      {
+        "id": "TestCase-T0113",
+        "type": "DyamicScenarioOutline",
+        "tags": ["regression", "sanity", "gb"],
+        "exampleIndex": "0, 0"
+      },
+      {
+        "id": "TestCase-T0114",
+        "type": "DyamicScenarioOutline",
+        "tags": ["regression", "sanity", "es"],
+        "exampleIndex": "1, 0"
+      }
+    ],
+    [
+      {
+        "id": "Simple scenario TestCase-T00121",
+        "type": "Scenario",
+        "tags": ["regression", "gb", "es"]
+      }
+    ]
+  ],
+  "test/utils/mock/gherkinParse/features/Dummy2": [
+    [
+      {
+        "id": "Simple scenario TestCase-T0211",
+        "type": "Scenario",
+        "tags": ["regression", "gb", "es"]
+      }
+    ]
+  ]
+}
