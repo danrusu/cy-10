@@ -1,12 +1,20 @@
 describe('Elements inner text', () => {
-  const html1 = '<div><span>1</span><span>2</span><span>3</span></div>';
-  const html2 = '<div><span>3</span><span>2</span><span>1</span></div>';
+  const html1 =
+    '<div id="test"><span>1</span><span>2</span><span>3</span></div>';
+  const html2 =
+    '<div class="demo"><span>3</span><span>2</span><span>1</span></div>';
 
-  const runCy = (htmlString, fn) =>
-    cy.writeFile('temp.html', htmlString).then(() => {
-      cy.visit('temp.html');
-      fn();
-    });
+  const runCy = () => {
+    let i = 0;
+    return (htmlString, fn) => {
+      const tempHtmlName = `temp_${i++}.html`;
+      return cy.writeFile(tempHtmlName, htmlString).then(() => {
+        cy.visit(tempHtmlName);
+        fn();
+      });
+    };
+  };
+  const run = runCy();
 
   const getJqueryElementsText = selector =>
     cy.get(selector).then($elem =>
@@ -17,12 +25,14 @@ describe('Elements inner text', () => {
     );
 
   it('Should have same text (order agnostic)', { baseUrl: undefined }, () => {
-    runCy(html1, () => getJqueryElementsText('span')).then(html1SpanText => {
-      runCy(html2, () =>
-        getJqueryElementsText('span').then(html2SpanText => {
-          expect(html1SpanText).to.deep.equal(html2SpanText);
-        }),
-      );
-    });
+    run(html1, () => getJqueryElementsText('#test span')).then(
+      html1SpanText => {
+        run(html2, () =>
+          getJqueryElementsText('.demo span').then(html2SpanText => {
+            expect(html1SpanText).to.deep.equal(html2SpanText);
+          }),
+        );
+      },
+    );
   });
 });
