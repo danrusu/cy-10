@@ -4,7 +4,7 @@ describe('Elements inner text', () => {
   const html2 =
     '<div class="demo"><span>3</span><span>2</span><span>1</span></div>';
 
-  const runCy = () => {
+  const runCy = (() => {
     let i = 0;
     return (htmlString, fn) => {
       const tempHtmlName = `temp_${i++}.html`;
@@ -13,8 +13,7 @@ describe('Elements inner text', () => {
         fn();
       });
     };
-  };
-  const run = runCy();
+  })();
 
   const getJqueryElementsText = selector =>
     cy.get(selector).then($elem =>
@@ -25,9 +24,9 @@ describe('Elements inner text', () => {
     );
 
   it('Should have same text (order agnostic)', { baseUrl: undefined }, () => {
-    run(html1, () => getJqueryElementsText('#test span')).then(
+    runCy(html1, () => getJqueryElementsText('#test span')).then(
       html1SpanText => {
-        run(html2, () =>
+        runCy(html2, () =>
           getJqueryElementsText('.demo span').then(html2SpanText => {
             expect(html1SpanText).to.deep.equal(html2SpanText);
           }),
