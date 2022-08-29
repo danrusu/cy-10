@@ -23,7 +23,7 @@ describe('Elements inner text', () => {
         .sort(),
     );
 
-  it('Should have same text (order agnostic)', { baseUrl: undefined }, () => {
+  it('Should have same text (order agnostic)', () => {
     runCy(html1, () => getJqueryElementsText('#test span')).then(
       html1SpanText => {
         runCy(html2, () =>
