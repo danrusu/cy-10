@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>Demo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <!-- <link rel="stylesheet" href="styles.css">
+  </script> -->
+</head>
+
+<body>
+  <button id="gql1">GQL 1</button>
+  <button id="gql2">GQL 2</button>
+  <button id="gql3">GQL 3</button>
+  <script>
+    Array.from(document.querySelectorAll('button')).forEach(button => {
+      button.addEventListener('click', gql(button.id))
+    });
+
+    function gql(id) {
+      return function () {
+        console.log(`fetch ${id}`);
+        fetch('https://qatools.ro/gql', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            operationName: 'test',
+            query: 'query { mockQuery { mockField } }',
+            variables: {
+              id
+            }
+          })
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>
