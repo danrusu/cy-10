@@ -1,7 +1,9 @@
 describe('Graphql test', () => {
-  it('Multiple graphql with same interceptor', () => {
+  beforeEach(() => {
     cy.visit('cypress/graphql.html');
+  });
 
+  it('Multiple graphql with same interceptor', () => {
     cy.intercept('https://qatools.ro/gql', req => {
       const id = req.body.variables.id;
       req.reply({
@@ -30,6 +32,29 @@ describe('Graphql test', () => {
         const { id } = http.response.body;
         expect(id).equals(`gql${index + 1}`); // index starts from 0
       });
+    });
+  });
+
+  it('Multiple graphql with same interceptor using req.alias', () => {
+    cy.intercept('https://qatools.ro/gql', req => {
+      if (req.body.operationName == 'testOperation') {
+        req.alias = 'gql';
+        req.reply({
+          statusCode: 200,
+          body: { id: req.body?.variables?.id },
+          delay: 100,
+        });
+      }
+    });
+
+    // Trigger all 3 graphql requests
+    cy.get('#gql1').click();
+    cy.get('#gql2').click();
+    cy.get('#gql3').click();
+
+    // Wait for all requests!
+    [1, 2, 3].forEach(index => {
+      cy.wait('@gql').then(assertResponseId(`gql${index}`));
     });
   });
 });
