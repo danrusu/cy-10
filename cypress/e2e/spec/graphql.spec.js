@@ -60,8 +60,8 @@ describe('Graphql test', () => {
 });
 
 function assertResponseId(expectedId) {
-  return http => {
-    const { id } = http.response.body;
+  return intercepted => {
+    const { id } = intercepted.response.body;
     cy.log(id);
     expect(id).equals(expectedId);
   };
