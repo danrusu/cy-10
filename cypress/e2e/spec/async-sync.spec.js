@@ -27,12 +27,14 @@ describe('Graphql test', () => {
 
     cy.wrap(null).then(() => {
       console.log('test1: from wrap(null) context', customKey);
+      expect(customKey).equals(1234);
     });
   });
 
   it('test2', () => {
     cy.wrap(null).then(() => {
       console.log('test2: from wrap(null) context', customKey);
+      expect(customKey).equals(1234);
     });
   });
 });
