@@ -10,7 +10,7 @@ describe('Graphql test', () => {
   });
 
   it('test1', () => {
-    cy.intercept('https://qatools.ro/gql', { id, key: 1234 }).as('gql');
+    cy.intercept('https://qatools.ro/gql', { key: 1234 }).as('gql');
 
     cy.get('#gql1').click();
 
