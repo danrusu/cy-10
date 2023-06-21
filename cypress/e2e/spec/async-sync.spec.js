@@ -10,16 +10,10 @@ describe('Graphql test', () => {
   });
 
   it('test1', () => {
-    cy.intercept('https://qatools.ro/gql', req => {
-      const id = req.body.variables.id;
-      req.reply({
-        statusCode: 200,
-        body: { id, key: 1234 },
-        delay: 100,
-      });
-    }).as('gql');
+    cy.intercept('https://qatools.ro/gql', { id, key: 1234 }).as('gql');
 
     cy.get('#gql1').click();
+
     cy.wait('@gql').then(xhr => {
       setCustomKey(xhr.response.body.key);
       console.log(customKey);
