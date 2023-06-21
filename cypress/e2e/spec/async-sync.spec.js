@@ -1,7 +1,9 @@
-let customKey;
+let customKey = 0;
 
 function setCustomKey(val) {
-  customKey = val;
+  cy.request('https://qatools.ro/testfiles/x.json').then(response => {
+    customKey = parseInt(response.body.operation) + val;
+  });
 }
 
 describe('Graphql test', () => {
@@ -21,14 +23,14 @@ describe('Graphql test', () => {
 
     cy.wrap(null).then(() => {
       console.log('test1: from wrap(null) context', customKey);
-      expect(customKey).equals(1234);
+      expect(customKey).equals(1235);
     });
   });
 
   it('test2', () => {
     cy.wrap(null).then(() => {
       console.log('test2: from wrap(null) context', customKey);
-      expect(customKey).equals(1234);
+      expect(customKey).equals(1235);
     });
   });
 });
