@@ -1,7 +1,7 @@
 const { defineConfig } = require('cypress');
 // const preprocessor = require('@badeball/cypress-cucumber-preprocessor');
 // const browserify = require('@badeball/cypress-cucumber-preprocessor/browserify');
-const { waitForExpectedValue, getResults } = require('./utils/wait');
+const { waitForExpectedValue } = require('./utils/wait');
 
 async function setupNodeEvents(on, config) {
   // await preprocessor.addCucumberPreprocessorPlugin(on, config);
@@ -11,16 +11,20 @@ async function setupNodeEvents(on, config) {
       console.log(`@@@ ${message}`);
       return null;
     },
-    waitForApiResponse({
-      url,
-      requestOptions = {},
+    waitForExpectedValue({
+      supplierJsModule,
+      supplierArgs,
       maxRetries = 1,
       stepTimeout = 1000,
     }) {
+      // Bypass cypress limitation (cannot pass functions values in a task argument)
+      const {
+        valueSupplierFn,
+        valueExpectedConditionFn,
+      } = require(supplierJsModule);
       return waitForExpectedValue({
-        valueSupplierFn: () => getResults(url, requestOptions),
-        // HARDCODED - cypress limitation - cannot pass functions values in a task argument
-        valueExpectedConditionFn: res => res.length > 0,
+        valueSupplierFn: () => valueSupplierFn(...supplierArgs),
+        valueExpectedConditionFn,
         maxRetries,
         stepTimeout,
       });

@@ -46,11 +46,6 @@ async function waitForExpectedValue({
   return suppliedValue;
 }
 
-function getResults(url, { options }) {
-  return fetch(url, options || {}).then(res => res.json());
-}
-
 module.exports = {
   waitForExpectedValue,
-  getResults,
 };

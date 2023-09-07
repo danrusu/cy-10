@@ -1,13 +1,14 @@
 describe('Wait suite', () => {
   it('Wait test', () => {
     cy.task(
-      'waitForApiResponse',
+      'waitForExpectedValue',
       {
-        url: 'http://localhost:1113/results/5',
-        maxRetries: 5,
-        stepTimeout: 1000,
+        supplierJsModule: './utils/api-check-supplier',
+        supplierArgs: ['http://localhost:1113/results/3'],
+        maxRetries: 3,
+        stepTimeout: 100,
       },
-      { timeout: 10000 },
+      { timeout: 60000 },
     ).then(result => {
       cy.log(result.toString());
     });
