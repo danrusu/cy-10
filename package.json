@@ -5,18 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "npx mocha test/**/*.spec.js",
-    "cy": "npx cypress run --browser chrome",
-    "cyo": "npx cypress open --browser chrome"
+    "cy": "npx cypress run --browser chrome --e2e",
+    "cyo": "npx cypress open --browser chrome --e2e"
   },
   "keywords": [],
   "author": "Dan rusu",
   "license": "MIT",
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "11.3.0",
+    "@badeball/cypress-cucumber-preprocessor": "20.0.0",
     "@cypress/browserify-preprocessor": "3.0.2",
-    "cypress": "12.12.0",
-    "gherkin-parse": "^1.0.6",
-    "glob": "^8.0.3"
+    "cypress": "13.6.1",
+    "gherkin-parse": "^1.0.8",
+    "glob": "^10.3.10"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [
@@ -24,7 +24,7 @@
     ]
   },
   "devDependencies": {
-    "chai": "^4.3.6",
-    "mocha": "^10.0.0"
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0"
   }
 }
