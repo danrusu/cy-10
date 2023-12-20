@@ -7,7 +7,7 @@ describe('Wait suite', () => {
         //supplierArgs: ['echo "Tested with success"'], // uncomment to see the test pass, comment next line
         supplierArgs: ['echo "Failure"'],
         //supplierArgs: ['xyz'], // uncomment to see case of unknown command
-        maxRetries: 5,
+        maxRetries: 3,
         stepTimeout: 2000,
       },
       { timeout: 60000 },

@@ -15,6 +15,7 @@ async function waitForExpectedValue({
     try {
       console.log(`try ${retryCount + 1}`);
       suppliedValue = await valueSupplierFn();
+      console.log(`suppliedValue=${suppliedValue}`);
       if (await valueExpectedConditionFn(suppliedValue)) {
         success = true;
         console.log(
@@ -28,7 +29,6 @@ async function waitForExpectedValue({
     await wait(stepTimeout);
     console.log(`...waited ${(retryCount + 1) * stepTimeout} ms`);
   }
-  console.log(`suppliedValue=${suppliedValue}`);
   if (!success) {
     throw new Error(
       `Expected condition not met for ${JSON.stringify(
