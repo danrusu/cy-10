@@ -6,6 +6,7 @@ describe('Wait suite', () => {
         supplierJsModule: './utils/command-result-supplier',
         //supplierArgs: ['echo "Tested with success"'], // uncomment to see the test pass, comment next line
         supplierArgs: ['echo "Failure"'],
+        //supplierArgs: ['xyz'], // uncomment to see case of unknown command
         maxRetries: 5,
         stepTimeout: 2000,
       },
